@@ -1,0 +1,8 @@
+<launch>
+    <arg name="pkg_name"  default="singleRCR" />
+    
+    <!-- start main vision control process-->
+    <node name="singleRCR" pkg="$(arg pkg_name)" type="run.py"  output="screen" >
+
+    </node>
+</launch>
