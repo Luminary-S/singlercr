@@ -1,7 +1,6 @@
 # 1. Single RCR control panel
-temporarily support ur5, if ur3, should revise:
-1. ./shell/roslaunch.sh to ur3_launch
-2. 
+support ur5 and ur3, should revise:
+
 <!-- TOC -->
 
 - [1. Single RCR control panel](#1-single-rcr-control-panel)
