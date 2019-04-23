@@ -5,3 +5,4 @@
 .e4p
 venv/
 .idea/
+__pycache__/

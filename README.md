@@ -1,4 +1,5 @@
-# Program Debug Note
+# Single RCR control panel
+
 
 ## Procedure
 1. start "run.py" by Python3
