@@ -1,4 +1,7 @@
 # 1. Single RCR control panel
+temporarily support ur5, if ur3, should revise:
+1. ./shell/roslaunch.sh to ur3_launch
+2. 
 <!-- TOC -->
 
 - [1. Single RCR control panel](#1-single-rcr-control-panel)
@@ -21,7 +24,7 @@
 <!-- /TOC -->
 
 # 2. Procedure
-1. start "run.py" by Python3
+1. start "run.py" by Python3 in terminal
 ## 2.1. Sensor INFO frame
 1. start your own serial port firstly by detecting the port
 2. choose the right port in the box, then "open" it

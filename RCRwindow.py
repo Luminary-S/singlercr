@@ -523,10 +523,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         """
         # self.ur.roslaunch()
-        roslaunch()
+        ur_type = self.ur_choose_box.currentText()
+        roslaunch(ur_type)
 
-        self.set_ur_info_txt("launch UR...")
-        self.ur.Init_node()
+        self.set_ur_info_txt("UR type：" + ur_type +"launch UR...")
+
+        self.ur.Init_node(ur_type)
 
     @pyqtSlot()
     def on_ur_core_btn_clicked(self):

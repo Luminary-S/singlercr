@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1353</width>
+    <width>1400</width>
     <height>950</height>
    </rect>
   </property>
@@ -1544,38 +1544,79 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QPushButton" name="clear_ur_info_txt_btn">
      <property name="geometry">
       <rect>
-       <x>25</x>
-       <y>440</y>
-       <width>211</width>
-       <height>81</height>
+       <x>70</x>
+       <y>840</y>
+       <width>151</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Clear UR INFO</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>26</x>
+       <y>445</y>
+       <width>231</width>
+       <height>70</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
-       <widget class="QPushButton" name="ur_launch_btn">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="font">
-         <font>
-          <family>Ubuntu</family>
-          <pointsize>14</pointsize>
-          <weight>50</weight>
-          <italic>false</italic>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(239, 41, 41);
+       <layout class="QHBoxLayout" name="horizontalLayout_15">
+        <item>
+         <widget class="QPushButton" name="ur_launch_btn">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="font">
+           <font>
+            <family>Ubuntu</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(239, 41, 41);
 font: 14pt &quot;Ubuntu&quot;;</string>
-        </property>
-        <property name="text">
-         <string>Launch</string>
-        </property>
-       </widget>
+          </property>
+          <property name="text">
+           <string>Launch</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="ur_choose_box">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <item>
+           <property name="text">
+            <string>ur5</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>ur3</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QPushButton" name="ur_core_btn">
@@ -1602,24 +1643,6 @@ font: 14pt &quot;Ubuntu&quot;;</string>
       </item>
      </layout>
     </widget>
-    <widget class="QPushButton" name="clear_ur_info_txt_btn">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>840</y>
-       <width>151</width>
-       <height>26</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Clear UR INFO</string>
-     </property>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -1627,7 +1650,7 @@ font: 14pt &quot;Ubuntu&quot;;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1353</width>
+     <width>1400</width>
      <height>28</height>
     </rect>
    </property>

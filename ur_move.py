@@ -32,12 +32,16 @@ class UR():
         # self.pub, self.sub = self.Init_node()
 
 
-    def Init_node(self):
+    def Init_node(self,type):
         rospy.init_node("move_ur_circle")
         self.pub = rospy.Publisher("/ur_driver/URScript", String, queue_size=10)
         self.sub = rospy.Subscriber("/joint_states", JointState, self.callback)
+        self.set_UR_ROBOT(type)
         return self.pub,  self.sub
-    
+
+    def set_UR_ROBOT(self,type):
+        UR_ROBOT = type
+
     def callback(self, msg):
         self.read_pos_from_ur_joint( msg )
 #        self.ur_pose_buff_list, self.ave_ur_pose = self.pos_filter_ur( self.ur_pose_buff_list, self.now_ur_pos )

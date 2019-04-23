@@ -9,20 +9,23 @@ info:1,change class function 2,add best sol function
 import math
 import numpy
 # #UR5 parmas
-d1 = 0.089159
-a2 = -0.42500
-a3 = -0.39225
-d4 = 0.10915
-d5 = 0.09465
-d6 = 0.0823
-PI = math.pi
-# d1 =  0.1519
-# a2 = -0.24365
-# a3 = -0.21325
-# d4 =  0.11235
-# d5 =  0.08535
-# d6 =  0.245
-# d6 =  0.0819
+UR_ROBOT = "ur5"
+if UR_ROBOT =="ur5":
+    d1 = 0.089159
+    a2 = -0.42500
+    a3 = -0.39225
+    d4 = 0.10915
+    d5 = 0.09465
+    d6 = 0.0823
+    PI = math.pi
+elif UR_ROBOT =="ur3":
+    d1 =  0.1519
+    a2 = -0.24365
+    a3 = -0.21325
+    d4 =  0.11235
+    d5 =  0.08535
+    d6 =  0.245
+    d6 =  0.0819
 ZERO_THRESH = 0.00000001
 class Kinematic:
     def __init__(self):
