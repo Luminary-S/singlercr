@@ -28,7 +28,7 @@
 
 ### recommend IDE : Pycharm
 1. you should have a python environment in your directory.
-2. you can set it by open : Setting ->project-> project interpreter -> add -> new environment based on "the python3 of your computer"
+2. you can set it by open : Setting ->project-> project interpreter -> add -> new environment based on "the python3 of your computer", select "inherit from global site-packages"
 3. after setting, you will have a "venv"(environment name) folder in your directory
 4. you should set your python libraries by following the [blog](https://blog.csdn.net/tterminator/article/details/79802094)
 5. you should add: 
@@ -86,12 +86,12 @@
 19. [ ] height_rcr_hSlider
 
 ### UR INFO (should be done by myself, don't press any btn)
-1. ur_forward_btn
-2. ur_back_btn
-3. ur_left_btn
-4. ur_right_btn
-5. ur_up_btn
-6. ur_down_btn
+1. [ ] ur_forward_btn
+2. [ ] ur_back_btn
+3. [ ] ur_left_btn
+4. [ ] ur_right_btn
+5. [ ] ur_up_btn
+6. [ ] ur_down_btn
 
 ### Base camera pos adjustment
 1. [x] cam_base_pitch_hSlider

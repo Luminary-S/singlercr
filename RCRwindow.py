@@ -7,6 +7,7 @@ Module implementing MainWindow.
 # pyqt5 class
 from PyQt5.QtCore import pyqtSlot, Qt
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
+from PyQt5 import QtGui
 
 from Ui_RCRwindow import Ui_MainWindow
 # define class
@@ -31,6 +32,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
+        self.setWindowTitle('Single Rope Climbing Robot Control Panel')
         self.init_show()
         # camera thread
         baseCam = BaseCamera()
@@ -62,6 +64,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.icon_curi_label.setPixmap(curi_pix)
         self.icon_curi_label.setScaledContents(True)
         self.icon_curi_label.setAlignment(Qt.AlignVCenter | Qt.AlignHCenter)
+
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("img/icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.setWindowIcon(icon)
 
     """
     base cam part
