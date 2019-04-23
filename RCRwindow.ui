@@ -1557,7 +1557,7 @@
       <item>
        <widget class="QPushButton" name="ur_launch_btn">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="font">
          <font>
@@ -1580,7 +1580,7 @@ font: 14pt &quot;Ubuntu&quot;;</string>
       <item>
        <widget class="QPushButton" name="ur_core_btn">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="font">
          <font>

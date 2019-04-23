@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/venv python
 # -*- coding: utf-8 -*-
 
 """
@@ -465,7 +465,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         back to the init base cam angle
         """
-        pitch, yaw = self.controlBoard.get_basecam_angle()
+        pitch, yaw = self.controlBoard.get_basecam_angles()
         self.cam_base_pitch_hSlider.setValue(pitch)
         self.cam_base_yaw_hSlider.setValue(yaw)
         self.controlBoard.go_init_basecam_angle()
@@ -512,7 +512,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        self.ur.roslaunch()
+        # self.ur.roslaunch()
         self.set_ur_info_txt("launch UR...")
         self.ur.Init_node()
 
@@ -521,7 +521,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        self.ur.roscore()
+        # self.ur.roscore()
+        self.ur.Init_node()
         self.set_ur_info_txt("open ros.")
 
     @pyqtSlot()
@@ -530,8 +531,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         """
         q_list = self.ur.set_init_q()
-        str = "set INITT ur pos:" + '[' + ','.join(q_list) + '].'
-        self.set_ur_info_txt(str)
+        stri = "set INITT ur pos:" + '[' + ','.join(map(str,q_list)) + '].'
+        self.set_ur_info_txt(stri)
 
     @pyqtSlot()
     def on_get_final_ur_pos_btn_clicked(self):
@@ -539,5 +540,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         """
         q_list = self.ur.set_final_q()
-        str = "set FINAL ur pos:" + '[' + ','.join(q_list) + '].'
-        self.set_ur_info_txt(str)
+        print(q_list)
+
+        stri = "set FINAL ur pos:" + '[' + ','.join(map(str,q_list)) + '].'
+        self.set_ur_info_txt(stri)

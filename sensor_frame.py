@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/venv python
 # -*- coding: utf-8 -*-
 #from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtCore import QThread, pyqtSignal, QWaitCondition, QMutex

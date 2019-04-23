@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/venv python
 # -*- coding: utf-8 -*-
 #from PyQt5.QtCore import pyqtSlot
 

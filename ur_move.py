@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/venv2 python
 # -*- coding: utf-8 -*-
 
 # Copyright (c) 2018.10, Guangli SUN
@@ -11,9 +11,11 @@ from std_msgs.msg import String
 from sensor_msgs.msg import JointState
 import os
 
-sglhome="/home/sgl/catkin_new/src/singleRCR"
-roscorefile = sglhome + "/shell/roscore.sh"
-roslaunchfile = sglhome + "/shell/roslaunch.sh"
+# sglhome="/home/sgl/catkin_new/src/singlercr"
+# roscorefile = sglhome + "/shell/roscore.sh"
+dir="/home/sgl/catkin_new/src"
+filename="/universal_robot/ur_gazebo/launch/ur3.launch"
+roslaunchfile = dir + filename
 
 class UR():
 
@@ -37,7 +39,7 @@ class UR():
         rospy.init_node("move_ur_circle")
         self.pub = rospy.Publisher("/ur_driver/URScript", String, queue_size=10)
         self.sub = rospy.Subscriber("/joint_states", JointState, self.callback)
-        # return self.pub,  self.sub
+        return self.pub,  self.sub
     
     def callback(self, msg):
         self.read_pos_from_ur_joint( msg )
@@ -62,6 +64,7 @@ class UR():
     
     def get_init_q(self):
         return self.init_q
+
     def set_init_q(self):
         self.init_q = self.now_ur_pos
         return self.init_q
@@ -161,12 +164,12 @@ class UR():
         print("ur move")
         
     def roscore(self):
-        file = roscorefile
-        os.system(file)
+        os.system("roscore")
+
         
     def roslaunch(self):
         file = roslaunchfile
-        os.system(file)
+        os.system('roslaunch ' + file)
 
     def ur_path_move(self, pub, q):
         ratet=3

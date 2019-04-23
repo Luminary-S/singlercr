@@ -1,3 +1,4 @@
+#!/usr/bin/venv python
 # -*- coding: utf-8 -*-
 #author; sgl 
 #date: 20190417
@@ -52,6 +53,7 @@ class BaseCamera(Cam):
     def __init__(self, width = 359 ,  height = 305 ):
         super(BaseCamera, self).__init__()
 #        self.cap = None
+#         Cam.__init__(self)
         self.cur_lines = []
         self.pre_lines = []
         self.cur_frame = np.array([])

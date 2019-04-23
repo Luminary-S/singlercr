@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/venv python
 # -*- coding: utf-8 -*-
 #author;sgl 
 #date: 20190417
@@ -9,7 +9,7 @@ import cv2
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtCore import QThread, pyqtSignal#, QWaitCondition, QMutex
 
-class Cam():
+class Cam(object):
     def __init__(self):
         self.cam_num = 0  # default open video0
         self.cap = None

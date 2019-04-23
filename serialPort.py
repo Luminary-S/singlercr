@@ -7,7 +7,7 @@ import re
 ''' base class of serial port,  
 it is the base class for sensor board and motor controller Arduino board
 '''
-class SerialPort():
+class SerialPort(object):
     def __init__(self):
         self.ComDict = {}
         self.ser = serial.Serial()

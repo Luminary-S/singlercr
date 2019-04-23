@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/venv2 python
 # -*- coding: utf-8 -*-
 
 # Copyright (c) 2019.04, Guangli SUN
@@ -103,7 +103,7 @@ class ControlBoard(SerialPort):
     def cmd_clean(self, status):
         print("step:"+status)
         print("cmd:" + self.cmd_dict[status])
-        cmd = self.cmd_dict[status].encode() 
+        cmd = self.cmd_dict[status]
         self.cmd_send(cmd)
         # time.sleep(0.01)
         # rospy.loginfo("RCR will move up.")
@@ -117,9 +117,11 @@ class ControlBoard(SerialPort):
     def ser_cam_adjust(self,  pitch,  yaw):
         cmd_pitch = str(pitch)+"fqgd"
         cmd_yaw = str(yaw) + "fpgd"
-        
-        self.ser.write( cmd_pitch.encode() )
-        self.ser.write( cmd_yaw.encode() )
+        self.cmd_send(cmd_pitch)
+        self.cmd_send(cmd_yaw)
+
+        # self.ser.write( cmd_pitch.encode() )
+        # self.ser.write( cmd_yaw.encode() )
         
     def cmd_cam_adjust(self,  pitch,  yaw):
         pitch = pitch + 100
@@ -154,7 +156,7 @@ class ControlBoard(SerialPort):
 def main():
     #1, login in the control board
         port = "/dev/ttyACM0"
-        self.ser = serial.Serial(port = port, baudrate = 9600, timeout = 0.5, parity=serial.PARITY_NONE,
+        ser = serial.Serial(port = port, baudrate = 9600, timeout = 0.5, parity=serial.PARITY_NONE,
                             stopbits=serial.STOPBITS_ONE, bytesize=serial.EIGHTBITS)
 
 def test():
