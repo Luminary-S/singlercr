@@ -1602,6 +1602,24 @@ font: 14pt &quot;Ubuntu&quot;;</string>
       </item>
      </layout>
     </widget>
+    <widget class="QPushButton" name="clear_ur_info_txt_btn">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>840</y>
+       <width>151</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Clear UR INFO</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

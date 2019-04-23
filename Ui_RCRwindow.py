@@ -712,6 +712,12 @@ class Ui_MainWindow(object):
 "font: 14pt \"Ubuntu\";")
         self.ur_core_btn.setObjectName("ur_core_btn")
         self.verticalLayout_5.addWidget(self.ur_core_btn)
+        self.clear_ur_info_txt_btn = QtWidgets.QPushButton(self.frame)
+        self.clear_ur_info_txt_btn.setGeometry(QtCore.QRect(70, 840, 151, 26))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.clear_ur_info_txt_btn.setFont(font)
+        self.clear_ur_info_txt_btn.setObjectName("clear_ur_info_txt_btn")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1353, 28))
@@ -822,5 +828,6 @@ class Ui_MainWindow(object):
         self.get_final_ur_pos_btn.setText(_translate("MainWindow", "GET Final Joint Angles"))
         self.ur_launch_btn.setText(_translate("MainWindow", "Launch"))
         self.ur_core_btn.setText(_translate("MainWindow", "Core"))
+        self.clear_ur_info_txt_btn.setText(_translate("MainWindow", "Clear UR INFO"))
 
 

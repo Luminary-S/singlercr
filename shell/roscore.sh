@@ -1,2 +1,3 @@
 #!/bin/bash/
-roscore
+gnome-terminal -x bash -c "roscore"
+

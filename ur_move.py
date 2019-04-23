@@ -1,4 +1,4 @@
-#!/usr/bin/venv2 python
+#!/usr/bin/venv python
 # -*- coding: utf-8 -*-
 
 # Copyright (c) 2018.10, Guangli SUN
@@ -10,12 +10,6 @@ from ur3_kinematics import *
 from std_msgs.msg import String
 from sensor_msgs.msg import JointState
 import os
-
-# sglhome="/home/sgl/catkin_new/src/singlercr"
-# roscorefile = sglhome + "/shell/roscore.sh"
-dir="/home/sgl/catkin_new/src"
-filename="/universal_robot/ur_gazebo/launch/ur3.launch"
-roslaunchfile = dir + filename
 
 class UR():
 
@@ -32,6 +26,9 @@ class UR():
         self.now_ur_pos = self.qstart
         self.init_q = self.qstart
         self.final_q = self.init_q
+        self.ur_init_ready = 0
+        self.ur_final_ready = 0
+        self.ur_ready = 0
         # self.pub, self.sub = self.Init_node()
 
 
@@ -63,14 +60,17 @@ class UR():
         return self.now_ur_pos
     
     def get_init_q(self):
-        return self.init_q
+        q = getDegree( self.init_q )
+        return q
 
     def set_init_q(self):
         self.init_q = self.now_ur_pos
         return self.init_q
         
     def get_final_q(self):
-        return self.final_q
+        q = getDegree(self.final_q)
+        return q
+
     def set_final_q(self):
         self.final_q = self.now_ur_pos
         return self.final_q
@@ -163,14 +163,6 @@ class UR():
     def __str__(self):
         print("ur move")
         
-    def roscore(self):
-        os.system("roscore")
-
-        
-    def roslaunch(self):
-        file = roslaunchfile
-        os.system('roslaunch ' + file)
-
     def ur_path_move(self, pub, q):
         ratet=3
         t = 0
@@ -238,12 +230,17 @@ def getpi(l):
         res.append( i / 180 * math.pi )
     return res
 
+def getDegree(l):
+    res = []
+    for i in l:
+        res.append(  i*180 / math.pi )
+    return res
 
 def main():
     pass
 
 def test():
-    pass
+    ur = UR(1)
 
 if __name__ == '__main__':
     main()

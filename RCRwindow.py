@@ -16,6 +16,7 @@ from cam_frame import *
 from sensor_frame import *
 from controlBoard_frame import *
 from ur_move import *
+from ros_op import *
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -55,6 +56,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def init_show(self):
         self.set_rcr_btns_bool(False)
+        self.set_ur_related_btns_bool(False)
+
         cuhk_pix = QPixmap('img/cuhk.png')
         self.icon_cuhk_label.setPixmap(cuhk_pix)
         self.icon_cuhk_label.setScaledContents(True)
@@ -252,9 +255,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.close_water_pump_btn.setEnabled(bool)
         self.open_sewage_pump_btn.setEnabled(bool)
         self.close_sewage_pump_btn.setEnabled(bool)
-        self.unit_touch_window_btn.setEnabled(bool)
-        self.unit_back_init_btn.setEnabled(bool)
-        self.unit_auto_clean_btn.setEnabled(bool)
+
         #        self.ok_rcr_set_btn.setEnabled(bool)
         self.stop_rcr_btn.setEnabled(bool)
         self.step_up_rcr_btn.setEnabled(bool)
@@ -265,6 +266,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.cam_base_back_angle_btn.setEnabled(bool)
         self.cam_base_adjust_btn.setEnabled(bool)
 
+
+    def set_ur_related_btns_bool(self, bool):
+        self.unit_touch_window_btn.setEnabled(bool)
+        self.unit_back_init_btn.setEnabled(bool)
+        self.unit_auto_clean_btn.setEnabled(bool)
     #        self.cam_base_pitch_hSlider.setTracking(bool)
     #        self.cam_base_yaw_hSlider.setTracking(bool)
     """
@@ -505,7 +511,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     """
 
     def set_ur_info_txt(self, txt):
-        self.ur_info_textEdit.setText(txt)
+        self.ur_info_textEdit.append(txt)
+
+    @pyqtSlot()
+    def on_clear_ur_info_txt_btn_clicked(self):
+        self.ur_info_textEdit.clear()
 
     @pyqtSlot()
     def on_ur_launch_btn_clicked(self):
@@ -513,6 +523,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         """
         # self.ur.roslaunch()
+        roslaunch()
+
         self.set_ur_info_txt("launch UR...")
         self.ur.Init_node()
 
@@ -521,9 +533,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        # self.ur.roscore()
-        self.ur.Init_node()
+        roscore()
+        # self.ur.Init_node()
         self.set_ur_info_txt("open ros.")
+        self.ur_core_btn.setEnabled(False)
 
     @pyqtSlot()
     def on_get_init_ur_pos_btn_clicked(self):
@@ -531,8 +544,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         """
         q_list = self.ur.set_init_q()
-        stri = "set INITT ur pos:" + '[' + ','.join(map(str,q_list)) + '].'
+        q = self.ur.get_init_q()
+        stri = "set INITT ur pos:" + '[' + ','.join(map(str,q)) + '].'
         self.set_ur_info_txt(stri)
+        msg = QMessageBox.information(self,
+                                "Confirm",
+                                "Pls confirm your pos choosen!",
+                                QMessageBox.Yes | QMessageBox.No)
+        if (msg == QMessageBox.Yes):
+            self.ur.ur_init_ready = 1
+            self.set_ur_info_txt(" init pos is ok!.")
+            # if self.ur.ur_final_ready == 1:
+            #     self.ur.ur_ready = 1
+        else:
+            self.ur.ur_init_ready = 0
+            self.ur.ur_ready = 0
+        self.ur.ur_ready = self.ur.ur_init_ready * self.ur.ur_final_ready
+        self.set_ur_related_btns_bool(self.ur.ur_ready)
+
 
     @pyqtSlot()
     def on_get_final_ur_pos_btn_clicked(self):
@@ -540,7 +569,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         """
         q_list = self.ur.set_final_q()
-        print(q_list)
+        q = self.ur.get_final_q()
 
-        stri = "set FINAL ur pos:" + '[' + ','.join(map(str,q_list)) + '].'
+        stri = "set FINAL ur pos:" + '[' + ','.join(map(str,q)) + '].'
         self.set_ur_info_txt(stri)
+        msg = QMessageBox.information(self,
+                                "Confirm",
+                                "Pls confirm your pos choosen!",
+                                QMessageBox.Yes | QMessageBox.No)
+        if (msg == QMessageBox.Yes):
+            self.ur.ur_final_ready = 1
+            self.set_ur_info_txt(" final pos is ok!.")
+            # if self.ur.ur_init_ready == 1:
+            #     self.ur.ur_ready = 1
+        else:
+            self.ur.ur_init_ready = 0
+            self.ur.ur_ready = 0
+        self.ur.ur_ready = self.ur.ur_init_ready * self.ur.ur_final_ready
+        self.set_ur_related_btns_bool(self.ur.ur_ready)

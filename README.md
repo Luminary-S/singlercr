@@ -122,10 +122,3 @@
 6. [x] cam_base_back_angle_btn
 7. [x] cam_base_set_angle_btn
  
- 
- ## Warning
- 1. set python libraries in the pycharm virtual environment
- following directories should be added:
-    1. /opt/ros/kinetic/lib   # has rosgraph
-    2. /opt/ros/kinetic/share #  has rospkg
-    3. /opt/ros/kinetic/lib/python2.7 #has rospy

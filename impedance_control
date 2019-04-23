@@ -1,0 +1,8 @@
+#!./venv/python
+
+def impedance_control(self, force, q):
+    q_d = []
+    """
+    
+    """
+    return q_d
