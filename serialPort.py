@@ -79,7 +79,7 @@ def test_serialport():
     #1, detect port
     ser.detect_port()
     #2, set port
-    ser.set_port(  list( ser.ComDict.keys()) [0] )
+    ser.set_port(  list( ser.ComDict.keys()) [0] , 9600)
 
     #3, open port
     ser.open_port()
@@ -96,6 +96,15 @@ def test_serialport():
     
 #    pass
 
+def test():
+    ser = SerialPort()
+    port = "/dev/ttyUSB0"
+    rate = 9600
+    ser.init_port(port,rate)
+    while True:
+        print( ser.read_data() )
+
 if __name__=="__main__":
-    test_serialport()
+    # test_serialport()
+    test()
 
