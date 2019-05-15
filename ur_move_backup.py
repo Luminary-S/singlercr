@@ -29,17 +29,19 @@ class UR():
         self.ur_init_ready = 0
         self.ur_final_ready = 0
         self.ur_ready = 0
-        self.kin = Kinematic()
 
-    def set_UR_ROBOT(self,type):
-        self.kin.set_urtype(type)
+        # self.pub, self.sub = self.Init_node()
 
-    """ros related """
+
     def Init_node(self,type="ur3"):
         rospy.init_node("move_ur_circle")
         self.pub = rospy.Publisher("/ur_driver/URScript", String, queue_size=10)
         self.sub = rospy.Subscriber("/joint_states", JointState, self.callback)
+        self.set_UR_ROBOT(type)
         return self.pub,  self.sub
+
+    def set_UR_ROBOT(self,type):
+        UR_ROBOT = type
 
     def callback(self, msg):
         self.read_pos_from_ur_joint( msg )
