@@ -1,0 +1,7 @@
+<launch>
+        <!-- start the ur5 in ab1, xiaobaige robot -->
+    <include file="$(find ur_modern_driver)/launch/ur5_bringup.launch">
+        <arg name="limited" value="true" />
+        <arg name="robot_ip" value="192.168.2.22" />
+    </include>
+</launch>

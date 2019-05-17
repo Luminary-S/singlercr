@@ -1,0 +1,10 @@
+up:2000e150000fogd
+down:2000e150000fohd
+stop:0e150000fohd
+forward:frd
+clean:lgd
+cleanstop:lkd
+pumpcleanrotate:mgd
+pumpcleanstop:mkd
+pumpsewagerotate:ngd
+pumpsewagestop:nkd

@@ -1,0 +1,7 @@
+<launch>
+        <!-- start the ur3 in SZRI 510, RCR robot -->
+    <include file="$(find ur_modern_driver)/launch/ur3_bringup.launch">
+        <arg name="limited" value="true" />
+        <arg name="robot_ip" value="192.168.1.103" />
+    </include>
+</launch>
