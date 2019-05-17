@@ -32,7 +32,7 @@ class UR():
         self.kin = Kinematic()
         self.STEP = 0.002 # unit: m
         self.urtype = "ur3"
-        rospy.init_node("move_ur_circle")
+
 
     """kinematics related """
     def set_UR_ROBOT(self,type):
@@ -55,6 +55,10 @@ class UR():
     """ros related """
     def Init_node(self,type="ur3"):
         # rospy.init_node("move_ur_circle")
+        try:
+            rospy.init_node("single rcr cleaning")
+        except:
+            print("roscore has been defined or other initiliazed.")
         self.pub = rospy.Publisher("/ur_driver/URScript", String, queue_size=10)
         self.sub = rospy.Subscriber("/joint_states", JointState, self.callback)
         return self.pub,  self.sub

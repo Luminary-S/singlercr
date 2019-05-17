@@ -16,7 +16,10 @@ class RCRNode():
         self.rcr = rcr
 
     def init_node(self):
-        # rospy.init_node("sensor_handler")
+        try:
+            rospy.init_node("single rcr cleaning")
+        except:
+            print("roscore has been defined or other initiliazed.")
         self.pub1 = rospy.Publisher("rcr", rcr, queue_size=10)
         self.pub2 = rospy.Publisher("sensorAr", sensorArduino, queue_size=10)
         # self.sub = rospy.Subscriber("/joint_states", JointState, self.callback)
