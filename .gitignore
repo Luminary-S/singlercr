@@ -1,8 +1,0 @@
-*.[oa]
-.eric6project
-.vscode
-.pyc
-.e4p
-venv/
-.idea/
-__pycache__/
