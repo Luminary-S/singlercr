@@ -17,7 +17,7 @@ class RCRNode():
 
     def init_node(self):
         try:
-            rospy.init_node("single rcr cleaning")
+            rospy.init_node("single_rcr_cleaning")
         except:
             print("roscore has been defined or other initiliazed.")
         self.pub1 = rospy.Publisher("rcr", rcr, queue_size=10)

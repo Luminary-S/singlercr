@@ -82,7 +82,7 @@ class Sensor(SerialPort):
         print(" force & ultra sonic sensors")
 
         
-'''cam thread '''
+'''sensor thread  for sensor data show'''
 class SensorThread(SerialThread):
     sensorSignal = pyqtSignal()
 

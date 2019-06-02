@@ -9,6 +9,7 @@ import rospy,time
 from ur3_kinematics import *
 from std_msgs.msg import String
 from sensor_msgs.msg import JointState
+from SerialThread import  SerialThread
 import os
 
 class UR():
@@ -101,6 +102,9 @@ class UR():
         # q_in = getpi(q)
         self.urscript_pub( pub, q, vel, ace, t )
 
+    def set_step(self, step):
+        self.STEP = step
+
     def ur_step_move(self, q, pub, i, direction):
         # t,vel,ace = self.set_ur_ros_params()
         urk = self.kin
@@ -144,6 +148,48 @@ class UR():
         return [trans_x, trans_y, trans_z]
 
     """ path ur move """
+    def path_demo_move(self):
+        cnt = 0
+        while cnt < 2:
+            # 1.  move down, manually adjust to stick to window
+            q0 = self.get_q()
+            self.set_step(0.25)
+            self.ur_step_move_down(q0, self.pub)
+            print("finish 1st step")
+            time.sleep(8)
+
+            print("start 2nd step")
+            #2. move back
+            q1 = self.get_q()
+            self.set_step(0.01)
+            self.ur_step_move_backward(q1, self.pub)
+            print("finish 2nd step")
+            time.sleep(4)
+
+            print("start 3nd step")
+            #3. move right
+            q2 = self.get_q()
+            self.set_step(0.1)
+            self.ur_step_move_right(q2, self.pub)
+            print("finish 3rd step")
+            time.sleep(4)
+
+            print("start 4nd step")
+            #4. move up
+            q3 = self.get_q()
+            self.set_step(0.25)
+            self.ur_step_move_up(q3, self.pub)
+            print("finish 4th step")
+            time.sleep(7)
+            # 4. move forward
+            print("start 5nd step")
+            q4 = self.get_q()
+            self.set_step(0.01)
+            self.ur_step_move_forward(q4, self.pub)
+            print("finish 5th step")
+            time.sleep(4)
+            cnt += 1
+
     def get_draw_line_xy(self,t,xy_center_pos,flag):
         if flag==0:
             # y = xy_center_pos[1] + self.radius * t / self.cont

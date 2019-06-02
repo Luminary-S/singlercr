@@ -411,10 +411,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        pub = self.ur.pub
-        q = self.ur.get_final_q()
-        self.ur.ur_path_move(pub, q)
-        self.set_status_txt("stopping, while ur is operating")
+        # pub = self.ur.pub
+        # q = self.ur.get_final_q()
+        # self.ur.ur_path_move(pub, q)
+        # self.set_status_txt("stopping, while ur is operating")
+        self.ur.path_demo_move()
+        self.set_status_txt("in demo moving.")
 
     def set_rcr_txt(self, height, vel, dir):
         self.rcr_info_textEdit.append(dir + '; target height: ' + str(height) + ", target vel: " + str(vel))
